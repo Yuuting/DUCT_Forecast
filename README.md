@@ -1,12 +1,13 @@
 # Duct data time series forecast
 
 本次数据处理的数据集来自南海区域2017年1月至三月的气象数据，其中各项气象参数所代表的含义如下表所示。
+
 nx|ny|nl|nt|xlong|xlat|hgt|height
---|--|--|--|--|--|--
+--|--|--|--|--|--|--|--
 东西格点数|南北格点数|层数|时序数|经度|纬度|高度|海拔高度
 
 z|e|pressure|Tem|QVAPOR|MM|NN
---|--|--|--|--|--
+--|--|--|--|--|--|--
 实际高度|水汽压|气压|温度|水汽混合比|大气折射率|修正大气折射率
 
 由于原始数据使用气象专用格式存储，我这里已使用`getWRFData.py`程序提取到了1-3月nx=1的时序数据，你可以在[这里](https://pan.baidu.com/s/1KXLhmSZLxvm5wBlsjbqXHg 
