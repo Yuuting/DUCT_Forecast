@@ -10,8 +10,8 @@ z|e|pressure|Tem|QVAPOR|MM|NN
 --|--|--|--|--|--|--
 实际高度|水汽压|气压|温度|水汽混合比|大气折射率|修正大气折射率
 
-由于原始数据使用气象专用格式存储，我这里已使用`getWRFData.py`程序提取到了1-3月nx=1的时序数据，你可以在[这里](https://pan.baidu.com/s/1KXLhmSZLxvm5wBlsjbqXHg 
-)（提取码：`sk23`）下载。
+由于原始数据使用气象专用格式存储，我这里已使用`getWRFData.py`程序提取到了1-3月nx=1的模拟数据，你可以在[这里](https://pan.baidu.com/s/1KXLhmSZLxvm5wBlsjbqXHg 
+)（提取码：`sk23`）下载。下载后将`模拟数据`放入当前文件夹。
 
 ## usage
 ```bash
@@ -23,12 +23,11 @@ python timeData.py
 ```bash
 python timeSeries.py
 ```
+- 数据预处理部分可以观察原始数据波动情况.
 
 > 使用LSTM训练时序数据
 
-- 数据预处理部分可以观察原始数据波动情况。
-
-- 使用75%的数据作为训练集，25%数据作为测试集，训练效果如图`lstm_reg.png`所示。
+- 使用75%的数据作为训练集，25%数据作为测试集，训练效果如图`lstm_reg_long_term.png`所示。
 
 - LSTM网络参数为：
 
@@ -38,5 +37,19 @@ python timeSeries.py
   mid_dim = 8
   mid_layers = 1
   batch_size = 48
+  效果：L1: 1.474    L2: 3.118
   ```
+> 使用GRU训练时序数据
 
+- 使用75%的数据作为训练集，25%数据作为测试集，训练效果如图`GRU_reg_long_term.png`所示。
+
+- LSTM网络参数为：
+
+  ```
+  inp_dim = 5
+  out_dim = 4
+  mid_dim = 12
+  mid_layers = 1
+  batch_size = 48
+  效果：L1: 1.197    L2: 2.053
+  ```
